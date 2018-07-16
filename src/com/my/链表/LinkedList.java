@@ -142,5 +142,16 @@ public class LinkedList<E> {
         return remove(size - 1);
     }
 
-
+    public void removeElement(E e){
+        Node root = head;
+        while (root.next!=null){
+            if(root.next.e.equals(e)){
+                Node curr = root.next;
+                root.next = curr.next;
+                curr = null;
+                break;
+            }
+            root = root.next;
+        }
+    }
 }
