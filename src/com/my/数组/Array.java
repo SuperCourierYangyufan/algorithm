@@ -16,6 +16,14 @@ public class Array<T> {
         size = 0;
     }
 
+    public Array(T[] arr){
+        data = (T[]) new Object[arr.length];
+        for (int i = 0; i <arr.length ; i++) {
+            data[i] = arr[i];
+        }
+        size = arr.length;
+    }
+
     //当没有传入时调用重构的构造方法,初始为10
     public Array() {
         this(10);

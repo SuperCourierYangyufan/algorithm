@@ -5,16 +5,23 @@ import com.my.数组.Array;
 /**
  * Created by YangYuFan on 2018/7/22.
  */
-public class MaxHeep<E extends Comparable<E>> {
+public class MaxHeap<E extends Comparable<E>> {
     private Array<E> data;
 
-    public MaxHeep(int capacity) {
+    public MaxHeap(int capacity) {
         data = new Array<>(capacity);
     }
 
-    public MaxHeep() {
+    public MaxHeap() {
         data = new Array<>();
     }
+
+    public MaxHeap(E[] arr){
+        data = new Array<>(arr);
+        for (int i = parent(arr.length-1); i >=0 ; i--)
+            siftDown(i);
+    }
+
 
     public int size() {
         return data.getSize();
@@ -77,4 +84,12 @@ public class MaxHeep<E extends Comparable<E>> {
             i = j;
         }
     }
+
+    public E replace(E e){
+        E ret = findMax();
+        data.set(0,e);
+        siftDown(0);
+        return ret;
+    }
+
 }
